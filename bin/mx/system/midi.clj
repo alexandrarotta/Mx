@@ -1,9 +1,14 @@
-(ns mx.midi
+(comment
+
+
+(ns mx.system.midi
+  (:refer-clojure :exclude [==])
+  (:use [clojure.core.logic :exclude [is] :as l]
+        [clojure.core.logic.nominal :exclude [fresh hash] :as nom]
+        [clojure.pprint :only [cl-format]])
+  (:require [clojure.pprint :as pp]
+            [clojure.core.logic.fd :as fd])
   (:use [mx.core])
-  (:use [mx.notes])
-  (:use [mx.durations])
-  (:use [mx.intervals])
-  (:use [clojure.pprint :only [cl-format]])
   (:import 	[javax.sound.midi
              MidiSystem
              Sequence
@@ -11,6 +16,12 @@
              MidiEvent
              MetaMessage]
             [java.io File]))
+
+;; An example class:
+
+(def <=>  ;; Spaceship operator for numbers.
+     (fn [a-number another-number]
+       (max -1 (min 1 (compare a-number another-number)))))
 
 (send-to Klass :new
          'Midi 'Anything
@@ -84,4 +95,29 @@
          (fn [this sequence output-full-path]
            (MidiSystem/write sequence 1 (File. output-full-path)))        
           
-         } {})
+          :<=>  ;; Spaceship operator for trilobites
+          (fn [this that]
+            (<=> (send-to this :facets)
+                 (send-to that :facets)))
+         })
+
+
+;; An example module (wrapped in a comment until it works)
+
+;(comment
+
+(send-to Module :new 'Komparable
+         {:=  (fn [this that] (zero? (send-to this :<=> that)))
+          :>  (fn [this that] (= 1 (send-to this :<=> that)))
+          :>= (fn [this that] (or (send-to this := that)
+                                  (send-to this :> that)))
+
+          :<  (fn [this that] (send-to that :> this))
+          :<= (fn [this that] (send-to that :>= this))
+
+          :between?
+          (fn [this lower upper]
+            (and (send-to this :>= lower)
+                 (send-to this :<= upper)))})
+
+)
