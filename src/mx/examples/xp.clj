@@ -6,21 +6,35 @@
     [mx.intervals]
     [mx.music]
     [mx.matter]
-    [mx.midi]))
+    [mx.midi]
+    [mx.theory]))
 
 
-(def note-1 (send-to Note :new c4 q_ 64))
-(def note-2 (send-to Note :new d4 q_ 64))
-(def note-3 (send-to Note :new e4 q_ 64))
-(def note-4 (send-to Note :new f4 q_ 64))
 
-(def items-1 (send-to Items :new (list note-1 note-2)))
-(def items-2 (send-to Items :new (list note-3 note-4)))
+(def note-1    (send-to Note      :new 62 s_ 64))
+(def note-2    (send-to Note      :new 65 s_ 64))
+(def note-3    (send-to Note      :new 64 s_ 64))
+(def note-4    (send-to Note      :new 62 s_ 64))
+(def note-5    (send-to Note      :new 67 s_ 64))
+(def note-6    (send-to Note      :new 65 s_ 64))
+(def note-7    (send-to Note      :new 69 s_ 64))
+(def note-8    (send-to Note      :new 67 s_ 64))
+(def note-9    (send-to Note      :new 65 s_ 64))
+(def note-10   (send-to Note      :new 64 s_ 64))
+(def note-11   (send-to Note      :new 62 s_ 64))
 
-(def sequential (send-to Sequential :new "Mx Seq 1" (list items-1) 0 5))
-(def simultaneous (send-to Simultaneous :new "Mx Sim 2" (list items-2) 5 9))
+(def voice-1f  (send-to Voice     :new (list note-1 note-2 note-3 note-4 note-5 note-6 note-7 note-8) 1))
+(def voice-1c  (send-to Voice     :new (list note-9 note-10 note-11) 1))
 
-(def score (send-to Score :new "Mx Score" (list sequential simultaneous)))
+(def motive-1  (send-to Motive    :new (list voice-1f)))
+(def cadence-1 (send-to Cadence   :new (list voice-1c)))
+(def form-1    (send-to Form      :new (list motive-1 cadence-1)))
+(def structure (send-to Structure :new (list form-1)))
+(def score     (send-to Score     :new (list structure)))
 
-(def matter (send-to Matter :new (list score)))
+(def matter    (send-to Matter    :new score))
 (send-to matter :materialize)
+
+;(def counterpoint (send-to Counterpoint :new form-1))
+;(send-to counterpoint :create-first-species-counterpoint 1 10)
+;(send-to counterpoint :create-mayor-melody 1 10 8 c4)

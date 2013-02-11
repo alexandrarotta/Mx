@@ -16,7 +16,68 @@
           :amplitude :amplitude
          } {})
 
+(send-to Klass :new
+         'Voice 'Anything
+         {
+          :add-instance-values
+          (fn [this items number]
+            (assoc this :items items :number number))
+          
+          :items :items
+          :number :number
+         } {})
 
+(send-to Klass :new
+         'Motive 'Anything
+         {
+          :add-instance-values
+          (fn [this items]
+            (assoc this :items items))
+          
+          :items :items
+         } {})
+
+(send-to Klass :new
+         'Cadence 'Anything
+         {
+          :add-instance-values
+          (fn [this items]
+            (assoc this :items items))
+          
+          :items :items
+         } {})
+
+(send-to Klass :new
+         'Form 'Anything
+         {
+          :add-instance-values
+          (fn [this items]
+            (assoc this :items items))
+          
+          :items :items
+         } {})
+
+(send-to Klass :new
+         'Structure 'Anything
+         {
+          :add-instance-values
+          (fn [this items]
+            (assoc this :items items))
+          
+          :items :items
+         } {})
+
+(send-to Klass :new
+         'Score 'Anything
+         {
+          :add-instance-values
+          (fn [this items]
+            (assoc this :items items))
+
+          :items :items          
+         } {})
+
+(comment
 (send-to Klass :new
          'Items 'Anything
          {
@@ -52,17 +113,6 @@
           :start-time :start-time 
           :time-unit :time-unit
          } {})
-
-(send-to Klass :new
-         'Score 'Anything
-         {
-          :add-instance-values
-          (fn [this info containers]
-            (assoc this :info info :containers containers))
-
-          :info :info 
-          :containers :containers           
-         } {})
-
+)
 ;=========================================================================================================================================================
 

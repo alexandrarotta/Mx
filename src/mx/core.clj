@@ -60,7 +60,6 @@
        (assert (map? instance))
        (eval (:__up_symbol__ (left-from-instance instance)))))
 
-
 ;; Core dispatch function
 
 (def lineage-1
@@ -86,8 +85,6 @@
          (if method
            (apply method instance args)
            (send-to instance :method-missing message args)))))
-
-
 
 ;;; The public interface
 
