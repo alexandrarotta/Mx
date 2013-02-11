@@ -5,8 +5,7 @@ http://mx-clojure.blogspot.com/
 
 ## Usage
 
-Algorithmic Composition on Clojure
-Work in process
+Algorithmic Composition on Clojure - Work in process
 
 ## License
 
