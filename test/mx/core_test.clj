@@ -1,6 +1,6 @@
 (ns mx.core-test
   (:use clojure.test
-        mx.core))
+        Mx.core))
 
 (deftest a-test
   (testing "FIXME, I fail."

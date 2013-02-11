@@ -1,13 +1,13 @@
 # Mx
 
-Mx is a highly expressive constraint-based music composition system that transforming a high-level representation of musical structure into a MIDI file. — Read more
-
-http://mx-clojure.blogspot.com/
+A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-Algorithmic Composition on Clojure - Work in process
+FIXME
 
 ## License
 
-Copyright © Oscar Riveros, 2013, Todos los derechos reservados.
+Copyright © 2013 FIXME
+
+Distributed under the Eclipse Public License, the same as Clojure.
