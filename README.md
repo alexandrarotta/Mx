@@ -9,6 +9,4 @@ Algorithmic Composition on Clojure - Work in process!!!
 
 ## License
 
-Copyright © 2013 FIXME
-
-Copyright © Oscar Riveros, 2013, Todos los derechos reservados.
+Copyright � Oscar Riveros, 2013, Todos los derechos reservados.
